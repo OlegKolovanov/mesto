@@ -6,12 +6,10 @@
   align-self: center;
   grid-column: 2;
   grid-row: 1;
-  border: none;
   background-color: #000;
   transition: opacity linear 0.3s;
   object-fit: cover;
   background-image: url(../../../images/edit.svg);
-  box-sizing: border-box;
 }
 
 @media screen and (max-width:500px) {
