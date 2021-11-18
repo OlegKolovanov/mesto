@@ -1,0 +1,5 @@
+.popup_active{
+  display: block;
+  transform: translate(-50%, -50%) scale(1);
+  transition: translate 0.5s linear;
+}

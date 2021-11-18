@@ -1,0 +1,11 @@
+.popup__text-info{
+  display: flex;
+  flex-direction: column;
+  margin: 54px 36px 48px;
+}
+
+@media screen and (max-width:515px){
+  .popup__text-info{
+    margin: 75px 22px 45px;
+  }
+}

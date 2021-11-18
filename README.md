@@ -15,3 +15,13 @@
 Не забудьте [оптимизировать картинки](https://tinypng.com/), чтобы ваш сайт загружался быстрее.
 
 Удачи!
+      <main class='content'>
+        <section class='profile'>
+          <img class='profile__avatar' src="./images/avatar.svg">
+          <div class='profile__info'>
+            <hi class='username'>Жак-Ив Кусто</hi>
+            <p class='hobby'>Исследователь океана</p>
+            <img class='profile__edit' src="./images/edit.svg">
+          </div>
+          <img class='profile__addButton' src="./images/addbutton.svg">
+        </section>

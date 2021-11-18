@@ -1,0 +1,10 @@
+.element__like-button{
+  height: 19px;
+  width: 22px;
+  margin: 0;
+  border: none;
+  background-color: white;
+  transition: opacity linear 0.3s;
+  background-image: url(../../../images/like.svg);
+  align-self: center;
+}
