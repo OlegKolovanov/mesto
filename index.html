@@ -1,91 +1,93 @@
 <!DOCTYPE html>
-<html lang='ru'>
+<html lang="ru">
 
 <head>
-  <meta charset='UTF-8'>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mesto</title>
-  <link rel='stylesheet' href='./page/index.css'>
+  <link rel="stylesheet" href="./pages/index.css">
 </head>
 
-<body class='body'>
-  <div class='page'>
-    <header class='header'>
-      <img class='header__logo' src='./images/logo.svg' alt='лого'>
+<body class="body">
+  <div class="page">
+    <header class="header">
+      <img class="header__logo" src="./images/logo.svg" alt="лого">
     </header>
 
-    <main class='content'>
-      <section class='profile'>
-        <img class='profile__avatar' src='./images/1.jpg' alt='аватар'>
-        <div class='profile__info'>
-          <h1 class='profile__username'>Жак-Ив Кусто</h1>
-          <p class='profile__hobby'>Исследователь океана</p>
-          <button class='profile__edit button-hover' type='button'></button>
+    <main class="content">
+      <section class="profile">
+        <img class="profile__avatar" src="./images/1.jpg" alt="аватар">
+        <div class="profile__info">
+          <h1 class="profile__username">Жак-Ив Кусто</h1>
+          <p class="profile__hobby">Исследователь океана</p>
+          <button class="profile__edit button-hover" type="button"></button>
         </div>
-        <button class='profile__addButton button-hover' type='button'></button>
+        <button class="profile__add-button button-hover" type="button"></button>
       </section>
 
-      <section class='elements'>
-        <div class='element'>
-          <img src='./images/1.jpg' alt="Работа" class='element__photo'>
-          <div class='element__group'>
-            <button class='element__like-button button-hover' type='button'></button>
-            <h2 class='element__title'>Работа</h2>
+      <section class="elements">
+        <div class="element">
+          <img src="./images/1.jpg" alt="Работа" class="element__photo">
+          <div class="element__group">
+            <button class="element__like-button" type="button"></button>
+            <h2 class="element__title">Работа</h2>
           </div>
         </div>
 
-        <div class='element'>
-          <img src='./images/2.jpg' alt='Рабочее пространство' class='element__photo'>
-          <div class='element__group'>
-            <button class='element__like-button button-hover' type='button'></button>
-            <h2 class='element__title'>Рабочее пространство</h2>
+        <div class="element">
+          <img src="./images/2.jpg" alt="Рабочее пространство" class="element__photo">
+          <div class="element__group">
+            <button class="element__like-button" type="button"></button>
+            <h2 class="element__title">Рабочее пространство</h2>
           </div>
         </div>
-        <div class='element'>
-          <img src='./images/3.jpg' alt='Хобби' class='element__photo'>
-          <div class='element__group'>
-            <button class='element__like-button button-hover' type='button'></button>
-            <h2 class='element__title'>Хобби</h2>
+        <div class="element">
+          <img src="./images/3.jpg" alt="Хобби" class="element__photo">
+          <div class="element__group">
+            <button class="element__like-button" type="button"></button>
+            <h2 class="element__title">Хобби</h2>
           </div>
         </div>
-        <div class='element'>
-          <img src='./images/3.jpg' alt='Хобби' class='element__photo'>
-          <div class='element__group'>
-            <button class='element__like-button button-hover' type='button'></button>
-            <h2 class='element__title'>Хобби</h2>
+        <div class="element">
+          <img src="./images/3.jpg" alt="Хобби" class="element__photo">
+          <div class="element__group">
+            <button class="element__like-button" type="button"></button>
+            <h2 class="element__title">Хобби</h2>
           </div>
         </div>
-        <div class='element'>
-          <img src='./images/2.jpg' alt='Рабочее пространство' class='element__photo'>
-          <div class='element__group'>
-            <button class='element__like-button button-hover' type='button'></button>
-            <h2 class='element__title'>Рабочее пространство</h2>
+        <div class="element">
+          <img src="./images/2.jpg" alt="Рабочее пространство" class="element__photo">
+          <div class="element__group">
+            <button class="element__like-button" type="button"></button>
+            <h2 class="element__title">Рабочее пространство</h2>
           </div>
         </div>
-        <div class='element'>
-          <img src="./images/1.jpg" alt="Работа" class='element__photo'>
-          <div class='element__group'>
-            <button class='element__like-button button-hover' type='button'></button>
-            <h2 class='element__title'>Работа</h2>
+        <div class="element">
+          <img src="./images/1.jpg" alt="Работа" class="element__photo">
+          <div class="element__group">
+            <button class="element__like-button" type="button"></button>
+            <h2 class="element__title">Работа</h2>
           </div>
         </div>
       </section>
 
-      <section class='popup-overlay'>
-        <form class='popup'>
-          <h2 class='popup__title'>Редактировать профиль</h2>
-          <button class='popup__close button-hover' type='button'></button>
-          <input type='text' class='popup__username' placeholder='Введите имя'>
-          <input type='text' class='popup__hobby' placeholder='Введите род деятельности'>
-          <button type='submit' class='popup__save'>Сохранить</button>
-        </form>
-      </section>
+      <div class="popup-overlay">
+        <div class="popup-container">
+          <form class="popup" name="form">
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <input type="text" class="popup__input popup__username" placeholder="Введите имя" name="username" required>
+            <input type="text" class="popup__input popup__hobby" placeholder="Введите род деятельности" name="hobby" required>
+            <button type="submit" class="popup__save button-hover" type="reset">Сохранить</button>
+          </form>
+          <button class="close-button button-hover" type="reset"></button>
+        </div>
+      </div>
     </main>
-    <footer class='footer'>
-      <h2 class='footer__title'>© 2020 Mesto Russia</h2>
+    <footer class="footer">
+      <h2 class="footer__title">© 2020 Mesto Russia</h2>
     </footer>
   </div>
-  <script src='./script/script.js'></script>
+  <script src="./script/script.js"></script>
 </body>
 
 </html>

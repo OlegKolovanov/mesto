@@ -10,6 +10,8 @@
   transition: opacity linear 0.3s;
   object-fit: cover;
   background-image: url(../../../images/edit.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 @media screen and (max-width:500px) {
@@ -17,7 +19,6 @@
     width: 18px;
     height: 18px;
     background-position: center;
-    border: 1px solid #FFFFFF;
     justify-self: center;
   }
   

@@ -1,40 +1,32 @@
-let Popup = document.querySelector('.popup');
-let OverlayPopup = document.querySelector('.popup-overlay');
-let ClosePopup = document.querySelector('.popup__close');
-let OpenPopup = document.querySelector('.profile__edit');
-let SavePopup = document.querySelector('.popup__save');
-
+//open popup
+let overlayPopup = document.querySelector('.popup-overlay');
+let openPopup = document.querySelector('.profile__edit');
+let popup = document.querySelector('.popup');
+let usernameInput = document.querySelector('.popup__username');
+let hobbyInput = document.querySelector('.popup__hobby');
+let userName = document.querySelector('.profile__username');
+let hobby = document.querySelector('.profile__hobby');
+let savePopup = document.querySelector('.popup__save')
+let closePopup = document.querySelector('.close-button');
 function OpennedPopup() {
-  Popup.classList.add('popup_active');
-  OverlayPopup.classList.add('popup-overlay_active');
+  overlayPopup.classList.add('popup-overlay_active');
+  hobbyInput.value = hobby.textContent;
+  usernameInput.value = userName.textContent;
+  //close popup
 }
-
-OpenPopup.addEventListener('click', OpennedPopup);
 
 function ClosedPopup() {
-  Popup.classList.remove('popup_active');
-  OverlayPopup.classList.remove('popup-overlay_active');
+  overlayPopup.classList.remove('popup-overlay_active');
 }
-
-ClosePopup.addEventListener('click', ClosedPopup);
-
-let UsernameInput = document.querySelector('.popup__username');
-let HobbyInput = document.querySelector('.popup__hobby');
-let UserName = document.querySelector('.profile__username');
-let Hobby = document.querySelector('.profile__hobby');
-HobbyInput.value = Hobby.textContent;
-
-UsernameInput.value = UserName.textContent;
+//save popup
 function formSubmitHandler (evt) {
   evt.preventDefault();
-  
-
-  UserName.textContent = UsernameInput.value;
-  Hobby.textContent = HobbyInput.value;
-
-  Popup.classList.remove('popup_active');
-  OverlayPopup.classList.remove('popup-overlay_active');
+  userName.textContent = usernameInput.value;
+  hobby.textContent = hobbyInput.value;
+  overlayPopup.classList.remove('popup-overlay_active');
 }
-
-Popup.addEventListener('submit', formSubmitHandler)
-SavePopup.addEventListener('click', ClosedPopup)
+popup.addEventListener('submit', formSubmitHandler)
+openPopup.addEventListener('click', OpennedPopup)
+closePopup.addEventListener('click', ClosedPopup)
+savePopup.addEventListener('click', ClosedPopup)
+//я так и не понял зачем удалять некоторые переменные (savepopup и т.д.), они же нужны для логики.
