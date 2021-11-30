@@ -131,19 +131,19 @@ function getItem(item) {
 
   return typeItem;
 }
-
+//Удаление фотографии
 function handleDelete(event) {
   const targetElement = event.target;
   const listItem = targetElement.closest('.element');
   listItem.remove();
 }
-
+//функция лайка
 function handleLike(event) {
   const listItem = event.target.closest('.element');
   const like = listItem.querySelector('.element__like-button')
   like.classList.toggle('element__like-button_active');
 }
-
+//Слушатели
 formSubmit.addEventListener('submit', formSubmitHandler);
 openEditPopup.addEventListener('click', opennedEditPopup);
 closeEditPopup.addEventListener('click', closedEditPopup);
