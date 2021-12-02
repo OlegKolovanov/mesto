@@ -1,20 +1,20 @@
 //open popup
-const openEditPopup = document.querySelector('.profile__edit');
+const openEditPopupBtn = document.querySelector('.profile__edit');
 const formProfileSubmit= document.querySelector('.form');
 const usernameInput = document.querySelector('.form__input_profile_username');
 const hobbyInput = document.querySelector('.form__input_profile_hobby');
 const userName = document.querySelector('.profile__username');
 const hobby = document.querySelector('.profile__hobby');
-const openAddPopup = document.querySelector('.profile__add-button');
+const openAddPopupBtn = document.querySelector('.profile__add-button');
 const addPopup = document.querySelector('.popup-location')
 const popupEdit = document.querySelector('.popup-edit');
-const closeEditPopup = popupEdit.querySelector('.popup__close');
-const closeAddPopup = addPopup.querySelector('.popup__close');
+const closeEditPopupBtn = popupEdit.querySelector('.popup__close');
+const closeAddPopupBtn = addPopup.querySelector('.popup__close');
 const nameInput = document.querySelector('.form__input_photo_name');
 const linkInput = document.querySelector('.form__input_photo_link');
 const formAddSubmit = addPopup.querySelector('.form');
 const picPopup = document.querySelector('.popup-picture');
-const closePicPopup = picPopup.querySelector('.popup__close');
+const closePicPopupBtn = picPopup.querySelector('.popup__close');
 const elements = document.querySelector('.elements');
 const elementTemplate = document.querySelector('.element-template').content;
 
@@ -127,9 +127,9 @@ function getItem(item) {
     openPopup(picPopup);
     const namePicPopup = picPopup.querySelector('.image-container__title');
     const imgPicPopup = picPopup.querySelector('.image-container__pic');
-    imgPicPopup.src = evt.target.src;
-    const targetElement = evt.target.closest('.element');
-    namePicPopup.textContent = targetElement.querySelector('.element__title').textContent
+    imgPicPopup.src = item.link;
+    imgPicPopup.alt = item.name;
+    namePicPopup.textContent = item.name;
   });
 
   return typeItem;
@@ -148,21 +148,21 @@ function handleLike(event) {
 //Слушатели
 formProfileSubmit.addEventListener('submit', handleProfileSubmit);
 
-openEditPopup.addEventListener('click', function(){
+openEditPopupBtn.addEventListener('click', function(){
   hobbyInput.value = hobby.textContent;
   usernameInput.value = userName.textContent;
   openPopup(popupEdit)
 });
-closeEditPopup.addEventListener('click', function(){
+closeEditPopupBtn.addEventListener('click', function(){
   closePopup(popupEdit)
 });
-openAddPopup.addEventListener('click', function(){
+openAddPopupBtn.addEventListener('click', function(){
   openPopup(addPopup)
 });
-closeAddPopup.addEventListener('click', function(){
+closeAddPopupBtn.addEventListener('click', function(){
   closePopup(addPopup)
 });
-closePicPopup.addEventListener('click', function(){
+closePicPopupBtn.addEventListener('click', function(){
   closePopup(picPopup);
 });
 formAddSubmit.addEventListener('submit', handleAddSubmit);
