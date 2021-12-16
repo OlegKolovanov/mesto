@@ -40,10 +40,12 @@
 
       <div class="popup popup-edit">
         <div class="popup__container">
-          <form class="form" name="form">
-            <h2 class="form__title">Редактировать профиль</h2>
-            <input type="text" class="form__input form__input_profile_username" placeholder="Введите имя" name="username" required>
-            <input type="text" class="form__input form__input_profile_hobby" placeholder="Введите род деятельности" name="hobby" required>
+          <h2 class="form__title">Редактировать профиль</h2>
+          <form class="form" name="form-edit">
+            <input type="text" id="name-input" class="form__input form__input_profile_username" placeholder="Введите имя" name="username" required minlength="2" maxlength="40" >
+            <span id="name-input-error" class="error"></span>
+            <input type="text" id="hobby-input" class="form__input form__input_profile_hobby" placeholder="Введите род деятельности" name="hobby" required minlength="2" maxlength="200">
+            <span id="hobby-input-error" class="error"></span>
             <button type="submit" class="form__save">Сохранить</button>
           </form>
           <button class="popup__close button-hover" type="button"></button>
@@ -51,10 +53,12 @@
       </div>
       <div class = "popup popup-location">
         <div class="popup__container">
+          <h2 class="form__title">Новое место</h2>
           <form class = "form" name = "new-location">
-            <h2 class="form__title">Новое место</h2>
-            <input type="text" class="form__input form__input_photo_name" placeholder="Название" name="title" required>
-            <input type="text" class="form__input form__input_photo_link" placeholder="Ссылка на картинку" name="link" required>
+            <input type="text" id="title-input" class="form__input form__input_photo_name" placeholder="Название" name="title" required minlength="2" maxlength="30">
+            <span id="title-input-error" class="error"></span>
+            <input type="url" id="link-input" class="form__input form__input_photo_link" placeholder="Ссылка на картинку" name="link" required>
+            <span id="link-input-error" class="error"></span>
             <button type="submit" class="form__save">Создать</button>
           </form>
           <button class="popup__close button-hover" type="button"></button>
@@ -73,6 +77,7 @@
     </footer>
   </div>
   <script src="./script/script.js"></script>
+  <script src="./script/validate.js"></script>
 </body>
 
 </html>

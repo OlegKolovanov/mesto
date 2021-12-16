@@ -17,6 +17,8 @@ const picPopup = document.querySelector('.popup-picture');
 const closePicPopupBtn = picPopup.querySelector('.popup__close');
 const elements = document.querySelector('.elements');
 const elementTemplate = document.querySelector('.element-template').content;
+const popupOverlay = document.querySelectorAll('.popup');
+
 
 const initialCards = [
   {
@@ -67,6 +69,10 @@ const initialCards = [
 
 function openPopup(popup){
   popup.classList.add('popup_active');
+  if(popup === addPopup){
+    const saveBtn = addPopup.querySelector('.form__save')
+    saveBtn.classList.add('form__save_disabled');
+  }
 }
 
 //close popup
@@ -77,8 +83,11 @@ function closePopup(popup){
 //save popup
 function handleProfileSubmit (evt) {
   evt.preventDefault();
-  userName.textContent = usernameInput.value;
-  hobby.textContent = hobbyInput.value;
+  if( userName.value === "" && hobby.value === "" ){
+    hobby.textContent = hobbyInput.value;
+    userName.textContent = usernameInput.valu
+  }
+
   closePopup(popupEdit);
 }
 
@@ -157,6 +166,8 @@ closeEditPopupBtn.addEventListener('click', function(){
   closePopup(popupEdit)
 });
 openAddPopupBtn.addEventListener('click', function(){
+  nameInput.value = '';
+  linkInput.value = '';
   openPopup(addPopup)
 });
 closeAddPopupBtn.addEventListener('click', function(){
@@ -166,5 +177,20 @@ closePicPopupBtn.addEventListener('click', function(){
   closePopup(picPopup);
 });
 formAddSubmit.addEventListener('submit', handleAddSubmit);
+
+document.addEventListener('keydown', function(evt){
+  if(evt.key === 'Escape' || evt.key === 'Esc'){
+   evt.target = document.querySelector('.popup_active').classList.remove('popup_active')
+  }
+})
+
+Array.from(popupOverlay).forEach(popup => {
+  popup.addEventListener('mousedown', (e) => {
+      console.log()
+      if (e.target === popup)
+      closePopup(popup);
+  });
+})
+
 
 render ()
