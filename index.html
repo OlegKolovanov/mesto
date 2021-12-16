@@ -26,9 +26,9 @@
       </section>
 
       <section class="elements">
-        <template class = "element-template">
+        <template class="element-template">
           <div class="element">
-            <img src="#"  class="element__photo" alt = "">
+            <img src="#" class="element__photo" alt="">
             <button class="element__trash button-hover" type="button"></button>
             <div class="element__group">
               <button class="element__like-button" type="button"></button>
@@ -40,24 +40,28 @@
 
       <div class="popup popup-edit">
         <div class="popup__container">
-          <h2 class="form__title">Редактировать профиль</h2>
+          <h2 class="popup__title">Редактировать профиль</h2>
           <form class="form" name="form-edit">
-            <input type="text" id="name-input" class="form__input form__input_profile_username" placeholder="Введите имя" name="username" required minlength="2" maxlength="40" >
+            <input type="text" id="name-input" class="form__input form__input_profile_username"
+              placeholder="Введите имя" name="username" required minlength="2" maxlength="40">
             <span id="name-input-error" class="error"></span>
-            <input type="text" id="hobby-input" class="form__input form__input_profile_hobby" placeholder="Введите род деятельности" name="hobby" required minlength="2" maxlength="200">
+            <input type="text" id="hobby-input" class="form__input form__input_profile_hobby"
+              placeholder="Введите род деятельности" name="hobby" required minlength="2" maxlength="200">
             <span id="hobby-input-error" class="error"></span>
             <button type="submit" class="form__save">Сохранить</button>
           </form>
           <button class="popup__close button-hover" type="button"></button>
         </div>
       </div>
-      <div class = "popup popup-location">
+      <div class="popup popup-location">
         <div class="popup__container">
-          <h2 class="form__title">Новое место</h2>
-          <form class = "form" name = "new-location">
-            <input type="text" id="title-input" class="form__input form__input_photo_name" placeholder="Название" name="title" required minlength="2" maxlength="30">
+          <h2 class="popup__title">Новое место</h2>
+          <form class="form" name="new-location">
+            <input type="text" id="title-input" class="form__input form__input_photo_name" placeholder="Название"
+              name="title" required minlength="2" maxlength="30">
             <span id="title-input-error" class="error"></span>
-            <input type="url" id="link-input" class="form__input form__input_photo_link" placeholder="Ссылка на картинку" name="link" required>
+            <input type="url" id="link-input" class="form__input form__input_photo_link"
+              placeholder="Ссылка на картинку" name="link" required>
             <span id="link-input-error" class="error"></span>
             <button type="submit" class="form__save">Создать</button>
           </form>
@@ -65,10 +69,10 @@
         </div>
       </div>
       <div class='popup popup-picture'>
-        <div class = 'image-container'>
-          <img src="#" class = 'image-container__pic' alt="картинка">
-          <p class = 'image-container__title'></p>
-          <button class = "popup__close button-hover"></button>
+        <div class='image-container'>
+          <img src="#" class='image-container__pic' alt="картинка">
+          <p class='image-container__title'></p>
+          <button class="popup__close button-hover"></button>
         </div>
       </div>
     </main>

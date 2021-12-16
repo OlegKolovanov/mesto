@@ -23,7 +23,7 @@
 @import url(../blocks/footer/__title/footer__title.css);
 @import url(../blocks/button-hover/button-hover.css);
 @import url(../blocks/form/popup.css);
-@import url(../blocks/form/__title/form__title.css);
+@import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/form/__save/form__save.css);
 @import url(../blocks/form/__save/form__save_disabled.css);
 @import url(../blocks/form/form__error/form__error_visible.css);
