@@ -69,24 +69,22 @@ const initialCards = [
 
 function openPopup(popup){
   popup.classList.add('popup_active');
-  if(popup === addPopup){
-    const saveBtn = addPopup.querySelector('.form__save')
-    saveBtn.classList.add('form__save_disabled');
-  }
+  document.addEventListener('keyup', closePopupEscape)
 }
 
 //close popup
 function closePopup(popup){
   popup.classList.remove('popup_active');
+  document.removeEventListener('keyup', closePopupEscape)
 }
 
 //save popup
 function handleProfileSubmit (evt) {
   evt.preventDefault();
-  if( userName.value === "" && hobby.value === "" ){
+  
     hobby.textContent = hobbyInput.value;
-    userName.textContent = usernameInput.valu
-  }
+    userName.textContent = usernameInput.value
+  
 
   closePopup(popupEdit);
 }
@@ -97,9 +95,9 @@ function handleAddSubmit(evt) {
   const inputLinkPhoto = linkInput.value;
   const listCard = getItem({name: inputNamePhoto, link: inputLinkPhoto});
   elements.prepend(listCard);
-  nameInput.value = '';
-  linkInput.value = '';
   closePopup(addPopup)
+  const saveBtn = addPopup.querySelector('.form__save')
+    saveBtn.classList.add('form__save_disabled');
 }
 
 //Функция рендер: вставляет темплейты
@@ -168,6 +166,8 @@ closeEditPopupBtn.addEventListener('click', function(){
 openAddPopupBtn.addEventListener('click', function(){
   nameInput.value = '';
   linkInput.value = '';
+  const saveBtn = addPopup.querySelector('.form__save')
+  saveBtn.classList.add('form__save_disabled');
   openPopup(addPopup)
 });
 closeAddPopupBtn.addEventListener('click', function(){
@@ -178,11 +178,15 @@ closePicPopupBtn.addEventListener('click', function(){
 });
 formAddSubmit.addEventListener('submit', handleAddSubmit);
 
-document.addEventListener('keydown', function(evt){
-  if(evt.key === 'Escape' || evt.key === 'Esc'){
-   evt.target = document.querySelector('.popup_active').classList.remove('popup_active')
+function closePopupEscape(evt){
+  if (evt.key === "Escape" || evt.key === "Esc") {
+    
+    const popupOpen = document.querySelector('.popup_active');
+
+    closePopup(popupOpen);
   }
-})
+}
+
 
 Array.from(popupOverlay).forEach(popup => {
   popup.addEventListener('mousedown', (e) => {

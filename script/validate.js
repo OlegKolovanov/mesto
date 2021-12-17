@@ -49,7 +49,7 @@ const enableValidation = ({formSelector,  ...rest}) => {
     console.log(forms)
     forms.forEach((form) =>{
       form.addEventListener('submit', (event) =>{
-        event.preventDefault(inputs, inactiveButtonClass)
+        event.preventDefault()
       })
       setInputListeners(form, rest);
     })
