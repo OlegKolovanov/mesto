@@ -17,7 +17,7 @@ const picPopup = document.querySelector('.popup-picture');
 const closePicPopupBtn = picPopup.querySelector('.popup__close');
 const elements = document.querySelector('.elements');
 const elementTemplate = document.querySelector('.element-template').content;
-const popupOverlay = document.querySelectorAll('.popup');
+const popups = document.querySelectorAll('.popup');
 
 
 const initialCards = [
@@ -96,8 +96,7 @@ function handleAddSubmit(evt) {
   const listCard = getItem({name: inputNamePhoto, link: inputLinkPhoto});
   elements.prepend(listCard);
   closePopup(addPopup)
-  const saveBtn = addPopup.querySelector('.form__save')
-    saveBtn.classList.add('form__save_disabled');
+  console.log('форма отправилась');
 }
 
 //Функция рендер: вставляет темплейты
@@ -168,6 +167,7 @@ openAddPopupBtn.addEventListener('click', function(){
   linkInput.value = '';
   const saveBtn = addPopup.querySelector('.form__save')
   saveBtn.classList.add('form__save_disabled');
+  saveBtn.setAttribute("disabled", "disabled")
   openPopup(addPopup)
 });
 closeAddPopupBtn.addEventListener('click', function(){
@@ -188,7 +188,7 @@ function closePopupEscape(evt){
 }
 
 
-Array.from(popupOverlay).forEach(popup => {
+Array.from(popups).forEach(popup => {
   popup.addEventListener('mousedown', (e) => {
       console.log()
       if (e.target === popup)
