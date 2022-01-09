@@ -46,9 +46,7 @@ export default class Card {
 
   _handlePicRemove(){
     this._picTrash.addEventListener('click', (event)=>{
-      const targetElement = event.target;
-      const listItem = targetElement.closest('.element');
-      listItem.remove();
+      this._element.remove()
     })
   }
 

@@ -3,7 +3,6 @@ import FormValidator from "./FormValidator.js";
 
 //open popup
 const openEditPopupBtn = document.querySelector('.profile__edit');
-const formProfileSubmit= document.querySelector('.form');
 const usernameInput = document.querySelector('.form__input_profile_username');
 const hobbyInput = document.querySelector('.form__input_profile_hobby');
 const userName = document.querySelector('.profile__username');
@@ -11,6 +10,7 @@ const hobby = document.querySelector('.profile__hobby');
 const openAddPopupBtn = document.querySelector('.profile__add-button');
 const addPopup = document.querySelector('.popup-location')
 const popupEdit = document.querySelector('.popup-edit');
+const formProfileSubmit= popupEdit.querySelector('.form');
 const closeEditPopupBtn = popupEdit.querySelector('.popup__close');
 const closeAddPopupBtn = addPopup.querySelector('.popup__close');
 const nameInput = document.querySelector('.form__input_photo_name');
@@ -74,68 +74,7 @@ function handleProfileSubmit (evt) {
   closePopup(popupEdit);
 }
 
-// function handleAddSubmit(evt) {
-//   evt.preventDefault();
-//   const inputNamePhoto = nameInput.value;
-//   const inputLinkPhoto = linkInput.value;
-//   const listCard = getItem({name: inputNamePhoto, link: inputLinkPhoto});
-//   elements.prepend(listCard);
-//   closePopup(addPopup)
-//   console.log('форма отправилась');
-// }
 
-// Функция рендер: вставляет темплейты
-// function render () {
-//   const cards = initialCards.map((item) => {
-//     return getItem(item)
-//   });
-//   elements.append(...cards);
-// }
- //Функция ГетАйтем: дублирует темплейты, задаёт параметры для карточек(название, фото)
-// function getItem(item) {
-//   const typeItem = elementTemplate.querySelector('.element').cloneNode(true);
-
-
-//   const photoItem = typeItem.querySelector('.element__photo');
-//   photoItem.src = item.link;
-//   photoItem.alt = item.name;
-
-//   const titleItem = typeItem.querySelector('.element__title');
-//   titleItem.textContent = item.name;
-
-
-//   const likeButton = typeItem.querySelector('.element__like-button')
-//   likeButton.addEventListener('click', handleLike)
-  
-
-
-//   const trashButton = typeItem.querySelector('.element__trash')
-//   trashButton.addEventListener('click', handlePicRemove)
- 
-
-//   const imageElement = typeItem.querySelector('.element__photo');
-//   imageElement.addEventListener('click', function(evt){
-//     openPopup(picPopup);
-//     const namePicPopup = picPopup.querySelector('.image-container__title');
-//     const imgPicPopup = picPopup.querySelector('.image-container__pic');
-//     imgPicPopup.src = item.link;
-//     imgPicPopup.alt = item.name;
-//     namePicPopup.textContent = item.name;
-//   });
-
-//   return typeItem;
-// }
-
-// Удаление фотографии
-// function handlePicRemove(event) {
-//   const targetElement = event.target;
-//   const listItem = targetElement.closest('.element');
-//   listItem.remove();
-// }
-//функция лайка
-// function handleLike(event) {
-//   event.target.classList.toggle('element__like-button_active');
-// }
 //Слушатели
 formProfileSubmit.addEventListener('submit', handleProfileSubmit);
 
@@ -229,4 +168,3 @@ editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
 
-// render ()
