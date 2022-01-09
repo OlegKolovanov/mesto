@@ -1,0 +1,66 @@
+export default class FormValidator {
+
+  constructor(form, configValidation){
+    this._form = form;
+    this._inputSelectors = Array.from(this._form.querySelectorAll(configValidation.inputSelector));
+    this._submitButtonSelector = form.querySelector(configValidation.submitButtonSelector);
+    this._inactiveButtonClass = configValidation.inactiveButtonClass;
+    this._inputErrorClass = configValidation.inputErrorClass;
+    this._errorClass = configValidation.errorClass;
+    
+  }
+
+  _showError(input) {
+    const errorMessage = this._form.querySelector(`#${input.id}-error`);
+    errorMessage.textContent = input.validationMessage;
+    errorMessage.classList.add(this._errorClass);
+    input.classList.add(this._inputErrorClass);
+  }
+
+  _hideError(input){
+    const errorMessage = this._form.querySelector(`#${input.id}-error`);
+    errorMessage.textContent = '';
+    errorMessage.classList.remove(this._errorClass);
+    input.classList.remove(this._inputErrorClass);
+  }
+
+  _checkInputValid(input){
+    if (input.validity.valid){
+      this._hideError(input)
+    }else{
+      this._showError(input, input.validationMessage)
+    }
+  }
+
+  _setEventListeners(){
+    this._inputSelectors.forEach((input)=>{
+      input.addEventListener('input', () =>{
+        this._checkInputValid(input);
+        this._toggleButtonError();
+      })
+    })
+  }
+
+  _toggleButtonError(){
+    if(this._hasInvalidInput(this._inputSelectors)){
+      this._submitButtonSelector.classList.add(this._inactiveButtonClass);
+      this._submitButtonSelector.disabled = true;
+    }else{
+      this._submitButtonSelector.classList.remove(this._inactiveButtonClass);
+      this._submitButtonSelector.disabled = false;
+    }
+  }
+
+  enableValidation(){
+    this._form.addEventListener('sibmit', (evt)=>{
+      evt.preventDefault();
+    })
+    this._setEventListeners();
+  }
+
+  _hasInvalidInput(){
+    return this._inputSelectors.some((input)=>{
+      return !input.validity.valid;
+    });
+  };
+}

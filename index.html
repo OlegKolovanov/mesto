@@ -41,7 +41,7 @@
       <div class="popup popup-edit">
         <div class="popup__container">
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="form" name="form-edit">
+          <form class="form" name="formEdit">
             <input type="text" id="name-input" class="form__input form__input_profile_username"
               placeholder="Введите имя" name="username" required minlength="2" maxlength="40">
             <span id="name-input-error" class="error"></span>
@@ -56,7 +56,7 @@
       <div class="popup popup-location">
         <div class="popup__container">
           <h2 class="popup__title">Новое место</h2>
-          <form class="form" name="new-location">
+          <form class="form" name="formAdd">
             <input type="text" id="title-input" class="form__input form__input_photo_name" placeholder="Название"
               name="title" required minlength="2" maxlength="30">
             <span id="title-input-error" class="error"></span>
@@ -80,8 +80,9 @@
       <h2 class="footer__title">© 2020 Mesto Russia</h2>
     </footer>
   </div>
-  <script src="./script/script.js"></script>
-  <script src="./script/validate.js"></script>
+  <script type="module" src="./script/script.js"></script>
+  <!-- <script  src="./script/validate.js"></script> -->
+  
 </body>
 
 </html>
