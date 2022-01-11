@@ -3,7 +3,7 @@ export default class FormValidator {
   constructor(form, configValidation){
     this._form = form;
     this._inputsList = Array.from(this._form.querySelectorAll(configValidation.inputSelector));
-    this._submitButtonSelector = form.querySelector(configValidation.submitButtonSelector);
+    this._submitButtom = form.querySelector(configValidation.submitButtom);
     this._inactiveButtonClass = configValidation.inactiveButtonClass;
     this._inputErrorClass = configValidation.inputErrorClass;
     this._errorClass = configValidation.errorClass;
@@ -43,11 +43,11 @@ export default class FormValidator {
 
   _toggleButtonError(){
     if(this._hasInvalidInput(this._inputsList)){
-      this._submitButtonSelector.classList.add(this._inactiveButtonClass);
-      this._submitButtonSelector.disabled = true;
+      this._submitButtom.classList.add(this._inactiveButtonClass);
+      this._submitButtom.disabled = true;
     }else{
-      this._submitButtonSelector.classList.remove(this._inactiveButtonClass);
-      this._submitButtonSelector.disabled = false;
+      this._submitButtom.classList.remove(this._inactiveButtonClass);
+      this._submitButtom.disabled = false;
     }
   }
 
