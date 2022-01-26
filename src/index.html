@@ -5,18 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mesto</title>
-  <link rel="stylesheet" href="./pages/index.css">
 </head>
 
 <body class="body">
   <div class="page">
     <header class="header">
-      <img class="header__logo" src="./images/logo.svg" alt="лого">
+      <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="лого">
     </header>
 
     <main class="content">
       <section class="profile">
-        <img class="profile__avatar" src="./images/1.jpg" alt="аватар">
+        <img class="profile__avatar" src="<%=require('./images/1.jpg')%>" alt="аватар">
         <div class="profile__info">
           <h1 class="profile__username">Жак-Ив Кусто</h1>
           <p class="profile__hobby">Исследователь океана</p>
@@ -43,7 +42,7 @@
           <h2 class="popup__title">Редактировать профиль</h2>
           <form class="form" name="formEdit">
             <input type="text" id="name-input" class="form__input form__input_profile_username"
-              placeholder="Введите имя" name="username" required minlength="2" maxlength="40">
+              placeholder="Введите имя" name="name" required minlength="2" maxlength="40">
             <span id="name-input-error" class="error"></span>
             <input type="text" id="hobby-input" class="form__input form__input_profile_hobby"
               placeholder="Введите род деятельности" name="hobby" required minlength="2" maxlength="200">
@@ -80,7 +79,6 @@
       <h2 class="footer__title">© 2020 Mesto Russia</h2>
     </footer>
   </div>
-  <script type="module" src="./script/script.js"></script>
   
 </body>
 

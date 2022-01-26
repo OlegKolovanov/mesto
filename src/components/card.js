@@ -2,9 +2,9 @@ export default class Card {
 
   constructor(data, cardSelector, openPicPopup){
     this.cardSelector = cardSelector;
-    this._title = data.title;
+    this._title = data.name;
     this._link = data.link;
-    this._alt = data.title;
+    this._alt = data.name;
     this._openPicPopup = openPicPopup;
   }
 
@@ -27,6 +27,7 @@ export default class Card {
     this._picTitle.textContent = this._title; 
 
     return this._element
+    
   }
 
   _setEventLisener(){
