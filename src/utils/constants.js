@@ -19,6 +19,9 @@ export const elementTemplate = document.querySelector('.element-template').conte
 export const popups = document.querySelectorAll('.popup');
 export const namePicPopup = document.querySelector('.image-container__title')
 export const imgPicPopup = document.querySelector('.image-container__pic')
+export const addPopupSelector = '.popup-location'
+export const editPopupSelector = '.popup-edit'
+export const picPopupSelector = '.popup-picture'
 
 
 export const initialCards = [

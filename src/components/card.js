@@ -1,15 +1,14 @@
 export default class Card {
 
   constructor(data, cardSelector, openPicPopup){
-    this.cardSelector = cardSelector;
+    this._cardSelector = cardSelector;
     this._title = data.name;
     this._link = data.link;
-    this._alt = data.name;
     this._openPicPopup = openPicPopup;
   }
 
   _getTemplate(){
-    const cardElement = this.cardSelector.querySelector('.element').cloneNode(true);
+    const cardElement = this._cardSelector.querySelector('.element').cloneNode(true);
 
     this._picImage = cardElement.querySelector('.element__photo');
     this._picTitle = cardElement.querySelector('.element__title');
@@ -21,7 +20,7 @@ export default class Card {
 
   getView(){
     this._element = this._getTemplate();
-    this._setEventLisener()
+    this._setEventListener()
     this._picImage.src = this._link;
     this._picImage.alt = this._title;
     this._picTitle.textContent = this._title; 
@@ -30,25 +29,25 @@ export default class Card {
     
   }
 
-  _setEventLisener(){
+  _setEventListener(){
     this._picImage.addEventListener('click', (evt)=>{
       evt.preventDefault();
       this._openPicPopup(this._link, this._title)
     });
-    this._handlePicRemove();
-    this._handlePicLike();
-  }
-
-  _handlePicLike(){
-    this._picLike.addEventListener('click', ()=>{
-      this._picLike.classList.toggle('element__like-button_active')
+    this._picTrash.addEventListener('click', (evt) =>{
+      this._handlePicRemove(evt)
+    })
+    this._picLike.addEventListener('click', (evt)=>{
+      this._handlePicLike(evt)
     })
   }
 
-  _handlePicRemove(){
-    this._picTrash.addEventListener('click', (event)=>{
-      this._element.remove()
-    })
+  _handlePicLike(evt){
+    evt.target.classList.toggle('element__like-button_active')
+  }
+
+  _handlePicRemove(evt){
+    evt.target.closest('.element').remove();
   }
 
 }

@@ -1,6 +1,6 @@
 import '../pages/index.css';
 
-import Card from "../components/card.js";
+import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js"
@@ -11,36 +11,30 @@ import{
  openEditPopupBtn,
  usernameInput,
  hobbyInput,
- userName,
- hobby,
  openAddPopupBtn,
  addPopup,
- popupEdit,
- formProfileSubmit,
- closeEditPopupBtn,
- closeAddPopupBtn,
  nameInput,
  linkInput,
- formAddSubmit,
- picPopup,
- closePicPopupBtn,
  elements,
  elementTemplate,
- popups,
- namePicPopup,
- imgPicPopup,
  initialCards,
- configValidation
- } from "../untils/constanst.js"
+ configValidation,
+ addPopupSelector,
+ picPopupSelector,
+ editPopupSelector
+ } from "../utils/constants.js"
 
-const editCard = new PopupWithForm(addPopup, ()=>{
-  addCard();
+const editCard = new PopupWithForm(addPopupSelector, (inputValues)=>{
+  addCard(inputValues);
   editCard.close()
+  nameInput.value = '';
+  linkInput.value = '';
+  console.log(inputValues)
 })
-const picCard = new PopupWithImage(picPopup)
+const picCard = new PopupWithImage(picPopupSelector)
 const dataUser = new UserInfo('.profile__username', '.profile__hobby')
 
-const popupInfo = new PopupWithForm(popupEdit, (inputValues) =>{
+const popupInfo = new PopupWithForm(editPopupSelector, (inputValues) =>{
   dataUser.setUserInfo(inputValues['name'], inputValues['hobby']);
   popupInfo.close();
   console.log(inputValues)
@@ -54,11 +48,7 @@ openEditPopupBtn.addEventListener('click', function(){
 });
 
 openAddPopupBtn.addEventListener('click', function(){
-  nameInput.value = '';
-  linkInput.value = '';
-  const saveBtn = addPopup.querySelector('.form__save')
-  saveBtn.classList.add('form__save_disabled');
-  saveBtn.setAttribute("disabled", "disabled")
+  addFormValidator.toggleButtonError()
   editCard.open()
 });
 
@@ -66,10 +56,7 @@ openAddPopupBtn.addEventListener('click', function(){
 
 const cardList = new Section({data:initialCards,
 renderer: (item)=>{
-  const card = new Card(item, elementTemplate, openPicPopup)
-  const cardElement = card.getView();
-  cardList.addItem(cardElement)
-  console.log(card.getView())
+  cardList.addItem(createCard(item))
 }}, 
 elements);
 
@@ -81,14 +68,14 @@ function createCard (data) {
   return cardEL;
 }
 
-function addCard(){
+function addCard(item){
   const data = {
-    title: nameInput.value,
-    link: linkInput.value,
-    alt: nameInput.value
+    name: item.title,
+    link: item.link,
+    alt: item.title
+    
   }
-  elements.prepend(createCard(data))
-  console.log(data)
+  cardList.addItem(createCard(data))
 }
 
 function openPicPopup(link, name){
