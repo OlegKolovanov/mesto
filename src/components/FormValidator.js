@@ -1,13 +1,13 @@
 export default class FormValidator {
 
-  constructor(form, configValidation){
+  constructor(form, configValidation) {
     this._form = form;
     this._inputsList = Array.from(this._form.querySelectorAll(configValidation.inputSelector));
     this._submitButtom = form.querySelector(configValidation.submitButtonSelector);
     this._inactiveButtonClass = configValidation.inactiveButtonClass;
     this._inputErrorClass = configValidation.inputErrorClass;
     this._errorClass = configValidation.errorClass;
-    
+
   }
 
   _showError(input) {
@@ -17,49 +17,49 @@ export default class FormValidator {
     input.classList.add(this._inputErrorClass);
   }
 
-  _hideError(input){
+  _hideError(input) {
     const errorMessage = this._form.querySelector(`#${input.id}-error`);
     errorMessage.textContent = '';
     errorMessage.classList.remove(this._errorClass);
     input.classList.remove(this._inputErrorClass);
   }
 
-  _checkInputValid(input){
-    if (input.validity.valid){
+  _checkInputValid(input) {
+    if (input.validity.valid) {
       this._hideError(input)
-    }else{
+    } else {
       this._showError(input, input.validationMessage)
     }
   }
 
-  _setEventListeners(){
-    this._inputsList.forEach((input)=>{
-      input.addEventListener('input', () =>{
+  _setEventListeners() {
+    this._inputsList.forEach((input) => {
+      input.addEventListener('input', () => {
         this._checkInputValid(input);
         this.toggleButtonError();
       })
     })
   }
 
-  toggleButtonError(){
-    if(this._hasInvalidInput(this._inputsList)){
+  toggleButtonError() {
+    if (this._hasInvalidInput(this._inputsList)) {
       this._submitButtom.classList.add(this._inactiveButtonClass);
       this._submitButtom.disabled = true;
-    }else{
+    } else {
       this._submitButtom.classList.remove(this._inactiveButtonClass);
       this._submitButtom.disabled = false;
     }
   }
 
-  enableValidation(){
-    this._form.addEventListener('submit', (evt)=>{
+  enableValidation() {
+    this._form.addEventListener('submit', (evt) => {
       evt.preventDefault();
     })
     this._setEventListeners();
   }
 
-  _hasInvalidInput(){
-    return this._inputsList.some((input)=>{
+  _hasInvalidInput() {
+    return this._inputsList.some((input) => {
       return !input.validity.valid;
     });
   };

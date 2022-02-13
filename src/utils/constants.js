@@ -6,6 +6,7 @@ export const hobby = document.querySelector('.profile__hobby');
 export const openAddPopupBtn = document.querySelector('.profile__add-button');
 export const addPopup = document.querySelector('.popup-location')
 export const popupEdit = document.querySelector('.popup-edit');
+export const popupAvatar = document.querySelector('.popup-avatar')
 export const formProfileSubmit= popupEdit.querySelector('.form');
 export const closeEditPopupBtn = popupEdit.querySelector('.popup__close');
 export const closeAddPopupBtn = addPopup.querySelector('.popup__close');
@@ -22,6 +23,11 @@ export const imgPicPopup = document.querySelector('.image-container__pic')
 export const addPopupSelector = '.popup-location'
 export const editPopupSelector = '.popup-edit'
 export const picPopupSelector = '.popup-picture'
+export const popupAvatarSelector = '.popup-avatar'
+export const openEditPopupAvatarBtn = document.querySelector('.profile__overlay')
+export const inputAvatarLink = document.querySelector('.form__input_avatar_link')
+export const userAvatar = document.querySelector('.profile__avatar')
+export const deletePopupSelector = '.popup-delete'
 
 
 export const initialCards = [

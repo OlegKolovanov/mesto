@@ -1,0 +1,12 @@
+.profile__edit-icon{
+  background-image: url(../../../images/red.svg);
+  position: absolute;
+  left: 47px;
+  top: 47px;
+  width: 26px;
+  height: 26px;
+  background-color: transparent;
+  border: none;
+  object-fit: cover;
+  cursor: pointer;
+}

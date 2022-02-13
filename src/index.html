@@ -15,7 +15,12 @@
 
     <main class="content">
       <section class="profile">
-        <img class="profile__avatar" src="<%=require('./images/1.jpg')%>" alt="аватар">
+        <div class="profile__userphoto">
+          <img class="profile__avatar" src="<%=require('./images/1.jpg')%>" alt="аватар">
+          <div class="profile__overlay">
+            <button class="profile__edit-icon" type="button"></button>
+          </div>
+        </div>
         <div class="profile__info">
           <h1 class="profile__username">Жак-Ив Kусто</h1>
           <p class="profile__hobby">Исследователь океана</p>
@@ -30,7 +35,10 @@
             <img src="#" class="element__photo" alt="">
             <button class="element__trash button-hover" type="button"></button>
             <div class="element__group">
-              <button class="element__like-button" type="button"></button>
+              <div class="element__like-group">
+                <button class="element__like-button" type="button"></button>
+                <span class="element__like-score">0</span>
+              </div>
               <h2 class="element__title">Работа</h2>
             </div>
           </div>
@@ -74,12 +82,32 @@
           <button class="popup__close button-hover"></button>
         </div>
       </div>
+      <div class="popup popup-delete">
+        <div class="popup__container">
+          <h2 class="popup__title">Вы уверены?</h2>
+          <button class="form__save">Да?</button>
+          <button class="popup__close button-hover" type="button"></button>
+        </div>
+       
+      </div>
+      <div class="popup popup-avatar">
+        <div class="popup__container">
+          <h2 class="popup__title">Обновить аватар</h2>
+          <form class="form" name="formAvatar">
+            <input type="url" id="url-input" class="form__input form__input_avatar_link"
+              placeholder="Ссылка на картинку" name="avatar" required>
+            <span id="url-input-error" class="error"></span>
+            <button type="submit" class="form__save">Сохранить</button>
+          </form>
+          <button class="popup__close button-hover" type="button"></button>
+        </div>
+      </div>
     </main>
     <footer class="footer">
       <h2 class="footer__title">© 2020 Mesto Russia</h2>
     </footer>
   </div>
-  
+
 </body>
 
 </html>
