@@ -47,9 +47,10 @@ const popupInfo = new PopupWithForm(editPopupSelector, (inputValues) => {
     .then((res) => {
       dataUser.setUserInfo(res)
     })
+    .then(() => popupInfo.close())
     .catch(err => console.log(err))
     .finally(popupInfo.renderLoading(false))
-  popupInfo.close()
+
 
 })
 
@@ -59,6 +60,7 @@ const popupAvatar = new PopupWithForm(popupAvatarSelector, (inputValues) => {
     .then((res) => {
       dataUser.setUserInfo(res)
     })
+    .then(() => popupAvatar.close())
     .catch(err => console.log(err))
     .finally(popupAvatar.renderLoading(false))
   inputAvatarLink.value = '';
@@ -86,9 +88,13 @@ const editCard = new PopupWithForm(addPopupSelector, (inputValues) => {
       console.log(res)
       addCard(res)
     })
+    .then(() => {
+      editCard.close()
+      nameInput.value = '';
+      linkInput.value = '';
+    })
     .catch(err => console.log(err))
     .finally(editCard.renderLoading(false))
-  editCard.close()
   nameInput.value = '';
   linkInput.value = '';
   console.log(inputValues)
