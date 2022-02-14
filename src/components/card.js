@@ -6,18 +6,19 @@ export default class Card {
     this._link = data.link;
     this._openPicPopup = openPicPopup;
     this._data = data;
-    this._idOwner = data.owner.id
+    this._idOwner = data.owner._id
     this._id = data._id
     this._userId = userId;
     this._addLikeCard = addLikeCard;
     this._openDeletePopup = openDeletePopup;
-
+    this._scoreLike = data.likes.length
 
   }
 
   deleteCard() {
     this._element.remove()
     this._element = null;
+    
   }
 
   getUserId() {
@@ -46,15 +47,16 @@ export default class Card {
     this._picImage.alt = this._title;
     this._picTitle.textContent = this._title;
 
-    // this._data.likes.forEach(elem => {
-    //   if (elem._id === this._userId) {
-    //     this._placeButtonLike.classList.add("place__button-like_active");
-    //   }
-    // });
+    this._data.likes.forEach((elem) => {
+      if (elem._id === this._userId) {
+        this._picLike.classList.add("element__like-button_active");
+      }
+    });
     if (this._idOwner != this._userId) {
       this._picTrash.remove();
     }
 
+    this._picScoreLike.textContent = this._scoreLike
 
     return this._element
 
@@ -65,20 +67,13 @@ export default class Card {
       evt.preventDefault();
       this._openPicPopup(this._link, this._title)
     });
-    this._picTrash.addEventListener('click', (evt) => {
-      evt.preventDefault();
-      this._openDeletePopup()
-    })
+    this._picTrash.addEventListener('click', this._openDeletePopup)
     this._picLike.addEventListener('click', this._addLikeCard)
   }
 
   _handlePicLike(evt) {
     evt.target.classList.toggle('element__like-button_active')
   }
-
-  // _handlePicRemove(evt){
-  //   evt.target.closest('.element').remove();
-  // }
 
   like(length) {
     this._picLike.classList.toggle('element__like-button_active')

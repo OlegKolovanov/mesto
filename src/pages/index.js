@@ -60,11 +60,12 @@ const popupAvatar = new PopupWithForm(popupAvatarSelector, (inputValues) => {
     .then((res) => {
       dataUser.setUserInfo(res)
     })
-    .then(() => popupAvatar.close())
+    .then(() => {
+      popupAvatar.close()
+      inputAvatarLink.value = '';
+    })
     .catch(err => console.log(err))
     .finally(popupAvatar.renderLoading(false))
-  inputAvatarLink.value = '';
-  popupAvatar.close()
 
 })
 
@@ -76,7 +77,8 @@ const deletePopup = new PopupDelete(deletePopupSelector, {
 
 const cardList = new Section({
   renderer: (item) => {
-    cardList.addItem(createCard(item))
+    const cardElement = createCard(item).getView()
+    cardList.addItem(cardElement)
   }
 },
   elements);
@@ -86,7 +88,8 @@ const editCard = new PopupWithForm(addPopupSelector, (inputValues) => {
   api.addCardUser(inputValues)
     .then((res) => {
       console.log(res)
-      addCard(res)
+      const cardElement = createCard(res).getView()
+      cardList.addItem(cardElement)
     })
     .then(() => {
       editCard.close()
@@ -95,8 +98,6 @@ const editCard = new PopupWithForm(addPopupSelector, (inputValues) => {
     })
     .catch(err => console.log(err))
     .finally(editCard.renderLoading(false))
-  nameInput.value = '';
-  linkInput.value = '';
   console.log(inputValues)
 
 })
@@ -115,17 +116,20 @@ api.getCard()
 api.getId()
   .then(res => {
     userId.id = res._id
-    console.log(res._id)
+    dataUser.setUserInfo(res)
 
   })
   .catch(err => console.log(err))
 
 function removeCard(card) {
+  console.log(card)
   api.removeCard(card._id)
     .then((res) => {
       card.deleteCard()
+      console.log(card)
     })
     .catch(err => console.log(err))
+    .finally(deletePopup.close())
 }
 
 function addLike(card) {
@@ -165,21 +169,9 @@ function createCard(data) {
     openDeletePopup: () => {
       deletePopup.open(card)
     }
-  },
-    elementTemplate, openPicPopup);
+  }, elementTemplate, openPicPopup);
 
-  const cardEL = card.getView();
-  return cardEL;
-}
-
-function addCard(item) {
-  const data = {
-    name: item.name,
-    link: item.link,
-    alt: item.name
-
-  }
-  cardList.addItem(createCard(data))
+  return card
 }
 
 const editFormValidator = new FormValidator(formEdit, configValidation);

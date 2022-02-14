@@ -10,13 +10,15 @@ export default class PopupDelete extends Popup {
   }
 
   open(card) {
+    console.log(card)
     super.open()
     return this._cardInfo = card
   }
 
   setEventListeners() {
     super.setEventListeners()
-    this._btnDelete.addEventListener('click', () => {
+    this._btnDelete.addEventListener('click', (evt) => {
+      evt.preventDefault()
       this._handleRemove(this._cardInfo)
     })
   }
