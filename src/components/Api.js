@@ -1,5 +1,3 @@
-
-
 export default class Api {
   constructor({ address, token, cohort }) {
     this._address = address

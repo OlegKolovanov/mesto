@@ -12,12 +12,10 @@ import {
   usernameInput,
   hobbyInput,
   openAddPopupBtn,
-  addPopup,
   nameInput,
   linkInput,
   elements,
   elementTemplate,
-  initialCards,
   configValidation,
   addPopupSelector,
   picPopupSelector,
@@ -25,7 +23,6 @@ import {
   openEditPopupAvatarBtn,
   popupAvatarSelector,
   inputAvatarLink,
-  userAvatar,
   deletePopupSelector
 } from "../utils/constants.js"
 
@@ -37,6 +34,18 @@ const api = new Api({
   token: 'f00f9377-ce10-4463-ad61-62c242422163',
   cohort: 'cohort-35'
 })
+
+const initialData = [api.getCard(), api.getId()]
+
+Promise.all(initialData)
+  .then(([card, user]) => {
+    console.log(user)
+    console.log(card)
+    dataUser.setUserInfo(user)
+    userId.id = user._id
+    cardList.renderItems(card)
+  })
+  .catch(err => console.log(err))
 
 const picCard = new PopupWithImage(picPopupSelector)
 const dataUser = new UserInfo('.profile__username', '.profile__hobby', '.profile__avatar')
@@ -53,7 +62,6 @@ const popupInfo = new PopupWithForm(editPopupSelector, (inputValues) => {
 
 
 })
-
 const popupAvatar = new PopupWithForm(popupAvatarSelector, (inputValues) => {
   popupAvatar.renderLoading(true)
   api.editAvatar(inputValues)
@@ -102,25 +110,6 @@ const editCard = new PopupWithForm(addPopupSelector, (inputValues) => {
 
 })
 
-// function editAvatarUser(item) {
-//   userAvatar.src = item.link
-// }
-
-api.getCard()
-  .then((card) => {
-    cardList.renderItems(card)
-  })
-  .catch(err => console.log(err))
-
-
-api.getId()
-  .then(res => {
-    userId.id = res._id
-    dataUser.setUserInfo(res)
-
-  })
-  .catch(err => console.log(err))
-
 function removeCard(card) {
   console.log(card)
   api.removeCard(card._id)
@@ -128,8 +117,8 @@ function removeCard(card) {
       card.deleteCard()
       console.log(card)
     })
+    .then(() => deletePopup.close())
     .catch(err => console.log(err))
-    .finally(deletePopup.close())
 }
 
 function addLike(card) {
@@ -148,8 +137,6 @@ function removeLike(card) {
     })
     .catch(err => console.log(err))
 }
-
-
 
 function openPicPopup(link, name) {
   picCard.open({ link, name })
